@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Basketball Counter</string>
+    <string name="threePointsA">+3 POINTS</string>
+    <string name="threePointsB">+3 POINTS</string>
+    <string name="twoPointsA">+2 POINTS</string>
+    <string name="twoPointsB">+2 POINTS</string>
+    <string name="freeThrowA">FREE THROW</string>
+    <string name="freeThrowB">FREE THROW</string>
+    <string name="reset">RESET</string>
+    <string name="save">SAVE</string>
+    <string name="display">DISPLAY</string>
+    <string name="team_a">Team A</string>
+    <string name="team_b">Team B</string>
+    <string name="pointsA">0</string>
+    <string name="pointsB">0</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+    <string name="false_button">false</string>
+    <string name="true_button">true</string>
+    <string name="question_text">question</string>
+
+</resources>
