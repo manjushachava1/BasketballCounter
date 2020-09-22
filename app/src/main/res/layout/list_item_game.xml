@@ -1,4 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -79,9 +81,9 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="Team A Score"
-                    android:textSize="15sp"
                     android:textColor="#62C2CC"
-                    android:textStyle="bold"/>
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="2dp"
@@ -97,7 +99,21 @@
                     android:text="Team B Score"
                     android:textColor="#9FC131"
                     android:textSize="15sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/teamIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:paddingLeft="3dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/b_team_icon" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
@@ -110,6 +126,7 @@
                 android:padding="5dp"
                 android:text="Game date"
                 android:textSize="10sp" />
+
         </LinearLayout>
 
     </LinearLayout>

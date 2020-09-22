@@ -3,6 +3,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -58,6 +59,7 @@ class GameListFragment : Fragment() {
         val scoreBTextView: TextView = itemView.findViewById(R.id.game_scoreB)
         val teamATextView: TextView = itemView.findViewById(R.id.game_teamA)
         val teamBTextView: TextView = itemView.findViewById(R.id.game_teamB)
+        val teamImageView: ImageView = itemView.findViewById(R.id.teamIcon)
 
     }
 
@@ -81,6 +83,11 @@ class GameListFragment : Fragment() {
                 scoreBTextView.text = game.scoreB.toString()
                 teamATextView.text = game.teamA
                 teamBTextView.text = game.teamB
+                if (game.scoreA > game.scoreB) {
+                    teamImageView.setImageResource(R.drawable.a_team_icon)
+                } else {
+                    teamImageView.setImageResource(R.drawable.b_team_icon)
+                }
             }
         }
     }
