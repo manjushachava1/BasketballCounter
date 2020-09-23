@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import GameListFragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +8,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), GameListFragment.Callbacks{
     private var aCount = 0
     private var bCount = 0
     private var mShowCountA: TextView? = null
@@ -20,6 +22,18 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
 
+        val currentFragment =
+            supportFragmentManager.findFragmentById(R.id.fragment_main)
+
+        if (currentFragment == null) {
+            val fragment = GameListFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_main, fragment)
+                .commit()
+        }
+
+        // code for saving scores
         mShowCountA = findViewById(R.id.teamScoreA)
         mShowCountB = findViewById(R.id.teamScoreB)
 
@@ -49,15 +63,33 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // code for switching to new fragment using the display button
         val displayButton = findViewById<Button>(R.id.display)
         displayButton.setOnClickListener{
-            val intent = Intent(this, DisplayGames::class.java)
-            intent.putExtra("teamAScore",aCount.toString())
-            Log.d("TAG", "Going into Display Activity")
-            startActivity(intent)
+            onDisplaySelected()
+            Log.d("display", "display button clicked")
         }
 
     }
+
+    // function used for switching fragments when Display button is pressed
+    override fun onDisplaySelected(){
+        val fragment = GameListFragment.newInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_main, fragment)
+            .commit()
+    }
+
+    // function used for switching fragments when Game Item is pressed
+    override fun onGameSelected(gameID: UUID) {
+        val fragment = MainActivityFragment.newInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_main, fragment)
+            .commit()
+    }
+
 
     fun addScore(view: View) {
         Log.d("TAG", "addScore() called")
@@ -126,27 +158,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("MainActivity", "onStart() called")
+        Log.d("TAG", "onStart() called")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("MainActivity", "onResume() called")
+        Log.d("TAG", "onResume() called")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("MainActivity", "onPause() called")
+        Log.d("TAG", "onPause() called")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("MainActivity", "onStop() called")
+        Log.d("TAG", "onStop() called")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("MainActivity", "onDestroy() called")
+        Log.d("TAG", "onDestroy() called")
     }
 
 }

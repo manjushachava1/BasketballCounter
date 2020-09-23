@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".DisplayGames"></activity>
         <activity android:name=".SaveScores" />
         <activity android:name=".MainActivity">
             <intent-filter>
