@@ -45,6 +45,15 @@ class MainActivity : AppCompatActivity() {
             Log.d("TAG", "${aCount.toString()}: Team A score")
             Log.d("TAG", "${bCount.toString()}: Team B score")
             Log.d("TAG", "Sending scores to next activity")
+
+            startActivity(intent)
+        }
+
+        val displayButton = findViewById<Button>(R.id.display)
+        displayButton.setOnClickListener{
+            val intent = Intent(this, DisplayGames::class.java)
+            intent.putExtra("teamAScore",aCount.toString())
+            Log.d("TAG", "Going into Display Activity")
             startActivity(intent)
         }
 
