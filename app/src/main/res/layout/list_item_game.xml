@@ -9,14 +9,16 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:gravity="left"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
 
 
             <TextView
@@ -24,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="Game title"
+                android:text="@string/game_title"
                 android:textAllCaps="true"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -41,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Team A: "
+                    android:text="@string/team_a_label"
                     android:textColor="#62C2CC"
                     android:textAllCaps="true"
                     android:textSize="15sp" />
@@ -51,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Team B: "
+                    android:text="@string/team_b_label"
                     android:textColor="#9FC131"
                     android:textAllCaps="true"
                     android:textSize="15sp" />
@@ -66,7 +68,8 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="InefficientWeight,RtlHardcoded">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -80,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Team A Score"
+                    android:text="@string/team_a_score"
                     android:textColor="#62C2CC"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -96,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Team B Score"
+                    android:text="@string/team_b_score"
                     android:textColor="#9FC131"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -112,7 +115,9 @@
                         android:paddingLeft="3dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/b_team_icon" />
+                        app:srcCompat="@drawable/b_team_icon"
+                        tools:ignore="RtlSymmetry"
+                        android:contentDescription="@string/team_icon" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
@@ -124,8 +129,9 @@
                 android:layout_gravity="right"
                 android:gravity="right"
                 android:padding="5dp"
-                android:text="Game date"
-                android:textSize="10sp" />
+                android:text="@string/game_date"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
 
         </LinearLayout>
 

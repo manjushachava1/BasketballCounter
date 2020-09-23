@@ -27,7 +27,7 @@ class SaveScores : AppCompatActivity() {
         resultA.text = "$teamAScore"
         resultB.text = "$teamBScore"
 
-        val toast = Toast.makeText(applicationContext, "Game Score Saved!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Game Score Saved!", Toast.LENGTH_SHORT).show()
         Log.d("TAG", "Showed 'Game Score Saved!' toast")
 
     }
