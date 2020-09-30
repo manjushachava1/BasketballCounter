@@ -4,13 +4,7 @@ import androidx.lifecycle.ViewModel
 
 class GameListViewModel : ViewModel(){
 
-    val games = mutableListOf<Game>()
+    private val gameRepository = GameRepository.get()
+    val gameListLiveData = gameRepository.getGames()
 
-    init {
-        for (i in 0 until 100) {
-            val game = Game()
-            game.title = "Game #$i"
-            games += game
-        }
-    }
 }

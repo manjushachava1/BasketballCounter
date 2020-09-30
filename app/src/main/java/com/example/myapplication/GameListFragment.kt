@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,16 +20,16 @@ private const val TAG = "GameListFragment"
 class GameListFragment : Fragment() {
 
     private lateinit var gameRecyclerView: RecyclerView
-    private var adapter: GameAdapter? = null
+    private var adapter: GameAdapter? = GameAdapter(emptyList())
 
     private val gameListViewModel: GameListViewModel by lazy {
         ViewModelProviders.of(this).get(GameListViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d(TAG, "Total games: ${gameListViewModel.games.size}")
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        Log.d(TAG, "Total games: ${gameListViewModel.games.size}")
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,13 +41,25 @@ class GameListFragment : Fragment() {
         gameRecyclerView =
             view.findViewById(R.id.game_recycler_view) as RecyclerView
         gameRecyclerView.layoutManager = LinearLayoutManager(context)
+        gameRecyclerView.adapter = adapter
 
-        updateUI()
+        //updateUI()
         return view
     }
 
-    private fun updateUI() {
-        val games = gameListViewModel.games
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        gameListViewModel.gameListLiveData.observe(
+            viewLifecycleOwner,
+            Observer { games ->
+                games?.let {
+                    Log.i(TAG, "Got crimes ${games.size}")
+                    updateUI(games)
+                }
+            })
+    }
+
+    private fun updateUI(games: List<Game>){
         adapter = GameAdapter(games)
         gameRecyclerView.adapter = adapter
     }

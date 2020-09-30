@@ -19,6 +19,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/game_photoA"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerInside"
+                android:cropToPadding="true"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:background="@android:color/darker_gray"/>
+
+            <ImageButton
+                android:id="@+id/game_cameraA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_camera"/>
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,6 +105,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/game_photoB"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerInside"
+                android:cropToPadding="true"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:background="@android:color/darker_gray"/>
+
+            <ImageButton
+                android:id="@+id/game_cameraB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_camera"/>
 
             <EditText
                 android:layout_width="wrap_content"
