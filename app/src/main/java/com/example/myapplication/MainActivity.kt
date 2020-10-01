@@ -17,10 +17,15 @@ class MainActivity : AppCompatActivity(), GameListFragment.Callbacks{
     private var mShowCountA: TextView? = null
     private var mShowCountB: TextView? = null
 
+    private lateinit var beatBox: BeatBox
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("MainActivity", "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
+
+        beatBox = BeatBox(assets)
+        beatBox.loadSounds()
 
         val currentFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_main)
