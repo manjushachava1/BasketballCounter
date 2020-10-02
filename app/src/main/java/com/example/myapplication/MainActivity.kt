@@ -2,11 +2,18 @@ package com.example.myapplication
 
 import GameListFragment
 import android.content.Intent
+import android.content.res.AssetFileDescriptor
+import android.media.AudioManager
+import android.media.MediaPlayer
+import android.media.SoundPool
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -19,13 +26,27 @@ class MainActivity : AppCompatActivity(), GameListFragment.Callbacks{
 
     private lateinit var beatBox: BeatBox
 
+    var mMediaPlayer: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("MainActivity", "onCreate(Bundle?) called")
         setContentView(R.layout.activity_main)
 
-        beatBox = BeatBox(assets)
-        beatBox.loadSounds()
+//        fun playSound(view: View) {
+//            if (mMediaPlayer == null) {
+//                mMediaPlayer = MediaPlayer.create(this, R.raw.jooaah)
+//                mMediaPlayer!!.isLooping = true
+//                mMediaPlayer!!.start()
+//            } else mMediaPlayer!!.start()
+//        }
+
+
+        val soundA = findViewById<ImageButton>(R.id.game_soundA)
+        var mp = MediaPlayer.create(this, R.raw.jooaah)
+        soundA.setOnClickListener{
+            mp.start()
+        }
 
         val currentFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_main)
@@ -181,9 +202,10 @@ class MainActivity : AppCompatActivity(), GameListFragment.Callbacks{
         Log.d("TAG", "onStop() called")
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("TAG", "onDestroy() called")
+        beatBox.release()
     }
 
 }

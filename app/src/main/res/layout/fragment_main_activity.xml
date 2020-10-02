@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -49,6 +48,7 @@
                         android:id="@+id/game_soundA"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:onClick="playSound"
                         android:src="@drawable/ic_baseline_mic_24" />
 
                 </LinearLayout>
