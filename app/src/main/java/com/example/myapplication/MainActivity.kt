@@ -43,9 +43,15 @@ class MainActivity : AppCompatActivity(), GameListFragment.Callbacks{
 
 
         val soundA = findViewById<ImageButton>(R.id.game_soundA)
-        var mp = MediaPlayer.create(this, R.raw.jooaah)
+        var mp = MediaPlayer.create(this, R.raw.yipee)
         soundA.setOnClickListener{
             mp.start()
+        }
+
+        val soundB = findViewById<ImageButton>(R.id.game_soundB)
+        var mp1 = MediaPlayer.create(this, R.raw.jooaah)
+        soundB.setOnClickListener{
+            mp1.start()
         }
 
         val currentFragment =
